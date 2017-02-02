@@ -1,11 +1,22 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>Welcome</h1>
-    <p>Sign up to get started</p>
-    <p>
-      <%= link_to sign_up_path, class: 'btn btn-primary btn-lg' do %>
-        Sign Up &raquo;
-      <% end %>
-    </p>
+    <% if current_user %>
+      <h2>Some info about you</h2>
+      <li>Login count <%= current_user.login_count %></li>
+      <li>Failed login count <%= current_user.failed_login_count %></li>
+      <li>Last request <%= current_user.last_requested_at %></li>
+      <li>Current login at <%= current_user.current_login_at %></li>
+      <li>Last login at <%= current_user.last_login_at %></li>
+      <li>Current ip<%= current_user.current_login_ip %></li>
+      <li>Last ip<%= current_user.last_login_ip %></li>
+    <% else %>
+      <h1>Welcome</h1>
+      <p>Sign up to get started</p>
+      <p>
+        <%= link_to sign_up_path, class: 'btn btn-primary btn-lg' do %>
+          Sign Up &raquo;
+        <% end %>
+      </p>
+    <% end %>
   </div>
 </div>
